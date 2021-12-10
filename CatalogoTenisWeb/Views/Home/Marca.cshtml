@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CatalogoTenisWeb.Models.ViewModels.TenisViewModel>
+@inject CatalogoTenisWeb.Services.MarcasService marcas
+
+@{
+    var mar = marcas.GetNombreMarcas();
+
+    ViewData["Title"] = "Marca";
+}
+<header>
+    <h1 class="slogan">El mejor catalogo de Tenis</h1>
+
+    <nav>
+        <a href="~/Home/Index">Principal</a>
+        @foreach (var c in mar)
+        {
+            <a href="~/@c">@c</a>
+        }
+    </nav>
+</header>
+<body>
+    <h1 id="nombreCategoria">@ViewBag.Categoria</h1>
+    <div class="productos">
+        @foreach (var p in Model)
+        {
+            <div>
+                <img height="150" src="~/img_tenis/@(p.Id).jpg" />
+            </div>
+            <h2>@p.Nombre</h2>
+            <h2>@p.Talla</h2>
+            <h2>@p.Color</h2>
+            <h3>@p.Precio.ToString("c")</h3>
+        }
+    </div>
+</body>

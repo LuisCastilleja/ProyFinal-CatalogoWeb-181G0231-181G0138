@@ -1,0 +1,33 @@
+﻿@model CatalogoTenisWeb.Models.Tenis
+
+@{
+    ViewData["Title"] = "Ver";
+}
+
+<h1>Catalogo de Tenis.</h1>
+<div class="datosproductos">
+    <h1 id="nombre">@Model.Nombre</h1>
+    <img height="150" src="~/img_tenis/@(Model.Id).jpg" id="imagen" />
+    <p>
+        <label>Precio:</label>
+        <label id="precio">@Model.Precio.ToString("c")</label>
+    </p>
+    <p>
+        <label>Marca:</label>
+        <label id="categoria"> @Model.IdMarcaNavigation.Nombre</label>
+    </p>
+    <p>
+        <label>Talla:</label>
+        <label id="unidadmedida">@Model.Talla</label>
+    </p>
+    <p>
+        <label>Color:</label>
+        <label id="descripcion">@Model.Color</label>
+    </p>
+
+    <p style="text-align:center; margin:20px 0">
+        <a href="javascript:window.history.back()">Regresar</a>
+    </p>
+
+</div>
+

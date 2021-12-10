@@ -1,0 +1,26 @@
+﻿@model IEnumerable<CatalogoTenisWeb.Models.Marca>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Administrar Marcas</h1>
+<section class="listado">
+
+    <a class="mark"   href="~/Marcas/Agregar">
+        <h1>Nueva Categoria...</h1>
+        <div class="botones">
+            <img src="~/images/add.png" />
+        </div>
+    </a>
+    @foreach (var c in Model)
+    {
+        <div class="card">
+            <h1>@c.Nombre</h1>
+
+            <div>
+                <a href="~/Marcas/Editar/@c.Id">Editar</a>
+                <a href="~/Marcas/Eliminar/@c.Id">Eliminar</a>
+            </div>
+        </div>
+    }
+</section>

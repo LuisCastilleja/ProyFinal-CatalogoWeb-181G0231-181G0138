@@ -1,0 +1,25 @@
+﻿@inject CatalogoTenisWeb.Services.MarcasService marcas
+@{
+    ViewData["Title"] = "Index";
+    var mar = marcas.GetNombreMarcas();
+}
+<header>
+    <h1 class="slogan">El mejor catalogo de Tenis</h1>
+
+    <nav>
+        <h3>Escoja la marca de su agrado para ver los tenis disponibles.</h3>
+        <br />
+        <a href="~/Home/Index">Principal</a>
+        @foreach (var c in mar )
+        {
+            <a href="~/@c">@c</a>
+        }
+    </nav>
+</header>
+<body>
+    <img  height="500" width="1340" src="~/images/fondoPagina.jpg" />
+</body>
+
+
+
+

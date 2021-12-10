@@ -1,0 +1,25 @@
+﻿@model CatalogoTenisWeb.Models.ViewModels.MarcaViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<form method="post" action="~/Marcas/Editar">
+    <div>
+        <h1>Editar Marca</h1>
+
+        <input type="hidden" id="id" asp-for="Id" />
+
+        <label>Nombre:</label>
+        <input type="text" id="txtNombre" asp-for="@Model.Nombre" required="required" />
+
+        <div>
+            <p id="error">
+                @Html.ValidationSummary()
+            </p>
+            <input type="submit" value="Guardar" id="btnGuardar" />
+            <input onclick="history.back()" action="~/Marcas/" type="button" value="Cancelar" id="btnCancelar" formnovalidate="formnovalidate" />
+        </div>
+    </div>
+</form>
+

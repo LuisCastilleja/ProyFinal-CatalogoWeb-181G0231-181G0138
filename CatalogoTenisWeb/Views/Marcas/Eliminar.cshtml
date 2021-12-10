@@ -1,0 +1,24 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CatalogoTenisWeb.Models.Marca;
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<form method="post" action="~/Marcas/Eliminar">
+    <div>
+        <h1>Eliminar Marca</h1>
+
+        <input type="hidden" id="id" asp-for="Id" />
+
+        <p>¿Está seguro de eliminar la marca "<span id="nombreCategoria">@Model.Nombre</span>"?</p>
+
+        <div class="botones">
+            <p id="error">
+                @Html.ValidationSummary()
+            </p>
+            <input type="submit" value="Si" id="btnSi" />
+            <input action="~/Marcas/" onclick="history.back()" type="button" value="No" id="btnNo" formnovalidate="formnovalidate" />
+        </div>
+    </div>
+</form>
+

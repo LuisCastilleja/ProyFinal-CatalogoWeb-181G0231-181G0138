@@ -1,0 +1,50 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<CatalogoTenisWeb.Models.Tenis>
+@inject CatalogoTenisWeb.Services.MarcasService servicioMarca
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Administrar productos</h1>
+<section class="listado">
+
+    <form method="get" action="~/Tenis/Index">
+        <select name="id" onchange="submit()" style="width:100%;margin: 10px 0"
+                asp-items="@( new SelectList(servicioMarca.GetCategorias(),"Id", "Nombre", ViewBag.IdCategoria))">
+            <option value="">Ver todos los tenis</option>
+        </select>
+    </form>
+
+    <a id="lnkNueva" class="mark" href="~/Tenis/Agregar">
+        <h1>Nuevo Producto...</h1>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <div class="image">
+            <img src="../images/addb.png" />
+        </div>
+        <h2></h2>
+        <h2></h2>
+        <div class="botones">
+            <img src="../images/add.png" />
+        </div>
+    </a>
+
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <h1>@item.Nombre</h1>
+            <h2>Tipo: @item.IdMarcaNavigation.Nombre</h2>
+            <h2>Talla: @item.Talla</h2>
+            <h2>Precio: @item.Precio.ToString("c")</h2>
+            <h2>Color: @item.Color</h2>
+            <div class="image">
+                <img height="150" src="~/img_tenis/@(item.Id).jpg" />
+            </div>
+            <div class="botones">
+                <a href="~/Tenis/Editar/@item.Id" class="btnEditar">Editar</a>
+                <a href="~/Tenis/Eliminar/@item.Id" class="btnBorrar">Eliminar</a>
+            </div>
+        </div>
+    }
+</section>
